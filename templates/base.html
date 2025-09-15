@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Dr Online{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header>
+    </header>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer>
+    <p class="copyright">کلیه حقوق مادی و معنوی این وب سایت متعلق به شرکت <b>ببینیم چی میشه</b> است.</p>
+</footer>
+
+<script src="{% static 'js/main.js' %}"></script> </body>
+</html>

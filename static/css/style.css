@@ -1,0 +1,486 @@
+/* ==========================================================================
+   DrOnline - Complete Stylesheet
+   Version: 1.0
+   ========================================================================== */
+
+/* === CSS Variables for Theming (Light & Dark Mode) === */
+:root {
+    --font-primary: "Yekan Bakh", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+    /* Spacing & Borders */
+    --border-radius-sm: 6px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+
+    /* Light Theme Colors */
+    --bg-color: #f8f9fa;
+    --surface-color: #ffffff;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --primary-color: #0d6efd;
+    --primary-hover: #0b5ed7;
+    --shadow-color: rgba(0, 0, 0, 0.075);
+    --selection-bg: rgba(13, 110, 253, 0.1);
+
+    /* Transitions */
+    --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode {
+    /* Dark Theme Colors */
+    --bg-color: #121212;
+    --surface-color: #1e1e1e;
+    --text-primary: #e9ecef;
+    --text-secondary: #adb5bd;
+    --border-color: #495057;
+    --primary-color: #3399ff;
+    --primary-hover: #0d6efd;
+    --shadow-color: rgba(0, 0, 0, 0.25);
+    --selection-bg: rgba(51, 153, 255, 0.2);
+}
+
+/* === Base & Global Styles === */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    direction: rtl;
+    line-height: 1.6;
+    transition: var(--theme-transition);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary-hover);
+}
+
+/* === Header & Navigation === */
+header {
+    background-color: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: var(--theme-transition);
+}
+
+.nav_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 1.5rem;
+}
+
+.dark-mode .logo img {
+    filter: invert(1) brightness(1.8);
+}
+
+.menu_container {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 1rem;
+}
+
+.menu_container li a {
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-sm);
+    color: var(--text-primary);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu_container li a:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.dropdown_icon {
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+/* === Search Bar === */
+.search_container {
+    position: relative;
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.search_container input[type="search"] {
+    width: 100%;
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    transition: var(--theme-transition);
+}
+
+.search_container input[type="search"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+}
+
+.search_container .search_icon {
+    position: absolute;
+    left: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--text-secondary);
+}
+
+/* === Header Controls (Toggle & Login) === */
+.controls_container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: var(--theme-transition);
+}
+
+#theme-toggle:hover {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+}
+
+.login button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius-md);
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login button:hover {
+    background-color: var(--primary-hover);
+}
+
+/* === Main Content & Doctor List === */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.main-content-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.main-content-container .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+#doctor-results-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.doctor_card {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    text-decoration: none;
+    color: var(--text-primary);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.doctor_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px var(--shadow-color);
+}
+
+.doctor-card-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.doctor-card-info {
+    padding: 1rem;
+}
+
+.doctor-card-info h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.doctor-card-info p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.doctor-card-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: bold;
+}
+
+/* === Doctor Detail Page === */
+.profile-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.profile-card {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-color);
+}
+
+.profile-sidebar .profile-card {
+    text-align: center;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--primary-color);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 1.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.profile-specialty {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.profile-rating {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.review-count {
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: var(--text-secondary);
+}
+
+.timeslot-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.timeslot-item {
+    display: block;
+    background-color: var(--bg-color);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.75rem;
+    border-radius: var(--border-radius-md);
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.timeslot-item:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.no-slots {
+    color: var(--text-secondary);
+}
+
+.profile-main h3 {
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-badge {
+    background-color: var(--bg-color);
+    color: var(--text-secondary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.9rem;
+}
+
+.service-list {
+    list-style: none;
+    padding: 0;
+}
+.service-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.service-list li:last-child {
+    border-bottom: none;
+}
+.service-price {
+    font-weight: bold;
+}
+
+.review-card {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+.review-comment {
+    font-style: italic;
+    color: var(--text-secondary);
+}
+.review-date {
+    display: block;
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
+/* === Footer === */
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    background-color: var(--surface-color);
+    transition: var(--theme-transition);
+}
+
+/* === Selection Highlight === */
+::selection {
+    background-color: var(--selection-bg);
+    color: var(--text-primary);
+}
+
+
+/* === Responsive Design === */
+@media (max-width: 992px) {
+    .profile-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    .nav_container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .menu_container {
+        margin-top: 1rem;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .menu_container li a {
+        text-align: center;
+        display: block;
+    }
+
+    .search_container {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+
+    .controls_container {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 1rem;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    .main-content-container h1 {
+        font-size: 2rem;
+    }
+}

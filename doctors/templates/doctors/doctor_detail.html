@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Profile: Dr. {{ doctor.full_name }}{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+
+    <aside class="profile-sidebar">
+        <div class="profile-card">
+            <div class="profile-image">
+                {% if doctor.profile_picture %}
+                    <img src="{{ doctor.profile_picture.url }}" alt="Dr. {{ doctor.full_name }}">
+                {% else %}
+                    <img src="{% static 'images/default_avatar.png' %}" alt="Default Avatar">
+                {% endif %}
+            </div>
+            <h1 class="profile-name">Dr. {{ doctor.full_name }}</h1>
+            <p class="profile-specialty">{{ doctor.specialty.name }}</p>
+
+            <div class="profile-rating">
+                <span>⭐</span>
+                <span>{{ doctor.average_rating|floatformat:1 }}</span>
+                <span class="review-count"> (from {{ reviews.count }} reviews)</span>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <h3>Available Appointments</h3>
+            <div class="timeslot-list">
+                {% for timeslot in available_timeslots %}
+                    {# This link should eventually point to a booking confirmation view #}
+                    <a href="#" class="timeslot-item">
+                        {{ timeslot.start_time|date:"l, F j" }} <br>
+                        {{ timeslot.start_time|time:"H:i" }} - {{ timeslot.end_time|time:"H:i" }}
+                    </a>
+                {% empty %}
+                    <p class="no-slots">No available appointments at this time.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </aside>
+
+    <div class="profile-main">
+        <div class="profile-card">
+            <h3>About Dr. {{ doctor.full_name }}</h3>
+            <p>{{ doctor.bio|linebreaks }}</p>
+        </div>
+
+        <div class="profile-card">
+            <h3>Skills & Expertise</h3>
+            <div class="skill-list">
+                {% for skill in doctor.skills.all %}
+                    <span class="skill-badge">{{ skill.name }}</span>
+                {% empty %}
+                    <p>No specific skills listed.</p>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="profile-card">
+            <h3>Services & Pricing</h3>
+            <ul class="service-list">
+                {% for service in doctor.services.all %}
+                    <li>
+                        <span>{{ service.name }} ({{ service.duration_min }} min)</span>
+                        <span class="service-price">${{ service.price|floatformat:2 }}</span>
+                    </li>
+                {% empty %}
+                    <li>No services listed.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="profile-card">
+            <h3>Patient Reviews</h3>
+            {% for review in reviews %}
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-author">{{ review.patient.first_name }}</span>
+                        <span class="review-rating">Rated: {{ review.rating }}/5 ⭐</span>
+                    </div>
+                    <p class="review-comment">"{{ review.comment }}"</p>
+                    <small class="review-date">{{ review.created_at|date:"F Y" }}</small>
+                </div>
+            {% empty %}
+                <p>This doctor has not been reviewed yet.</p>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}

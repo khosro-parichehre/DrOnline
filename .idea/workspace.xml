@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c606e9e-ac56-4833-9cfb-8231f84a53e7" name="Changes" comment="feat(doctors): Create initial app with models and admin panel">
-      <change afterPath="$PROJECT_DIR$/doctors/templates/doctors/doctor_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doctors/templates/doctors/doctor_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+    <list default="true" id="5c606e9e-ac56-4833-9cfb-8231f84a53e7" name="Changes" comment="feat(accounts): Add CustomUser models">
+      <change afterPath="$PROJECT_DIR$/wallet/signals.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,9 +16,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="TypeScript File" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -113,7 +110,7 @@
       <option name="presentableId" value="Default" />
       <updated>1757885236975</updated>
       <workItem from="1757885238002" duration="4356000" />
-      <workItem from="1757912680059" duration="9962000" />
+      <workItem from="1757912680059" duration="15202000" />
     </task>
     <task id="LOCAL-00001" summary="feat(doctors): Create initial app with models and admin panel">
       <option name="closed" value="true" />
@@ -123,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757916090553</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat(accounts): Add CustomUser models">
+      <option name="closed" value="true" />
+      <created>1757927402531</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1757927402531</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,6 +136,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat(doctors): Create initial app with models and admin panel" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(doctors): Create initial app with models and admin panel" />
+    <MESSAGE value="feat(accounts): Add CustomUser models" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(accounts): Add CustomUser models" />
   </component>
 </project>
